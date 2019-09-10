@@ -1,7 +1,3 @@
-##Writeup Template
-###You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
-
----
 
 **Vehicle Detection Project**
 
@@ -23,15 +19,9 @@ The goals / steps of this project are the following:
 [image6]: ./Screenshots/Image6.png
 [video1]: ./project_video_out.mp4
 
-## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
-###Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
-
----
 ###Writeup / README
 
-###Histogram of Oriented Gradients (HOG)
-
-####1. Explain how (and identify where in your code) you extracted HOG features from the training images.
+###1. Histogram of Oriented Gradients (HOG)
 
 The code for this step is contained in the second code cell of the IPython notebook (or in lines # through # of the file called `some_file.py`).  
 
@@ -44,7 +34,7 @@ I then explored different color spaces and different `skimage.hog()` parameters 
 
 ![alt text][image6]
 
-####2. Explain how you settled on your final choice of HOG parameters.
+####2. Final choice of HOG parameters.
 
 I tried various combinations of parameters and settled up with the parameters that gave me the highest SVC test accuracy of 99.35%. The following are the parameters that I finally used
 
@@ -58,7 +48,7 @@ spatial = 32
 histbin = 32
 ```
 
-####3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
+####3. Training a classifier using selected HOG features (and color features if you used them).
 
 I concatenated features extracted from the following steps
 1. convert the image into YCrCb colorspace
@@ -69,8 +59,6 @@ I concatenated features extracted from the following steps
 I then trained a linearSVC using these features and obtained a testing accuracy of 99.35%
 
 ###Sliding Window Search
-
-####1. Describe how (and identify where in your code) you implemented a sliding window search.  How did you decide what scales to search and how much to overlap windows?
 
 I used the following windows to search for car. The code is implemented in code cell 9
 
@@ -119,8 +107,6 @@ if ProcessVideo.FrameCount>6:
 window_img = draw_labeled_bboxes(img, ProcessVideo.labels)
 ```
 ###Discussion
-
-####1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
 Issues: I faced issue with getting rid of false positives. I had to play with the FrameCount and threshold a lot to come up with a robust vehicle detection
 
